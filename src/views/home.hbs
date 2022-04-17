@@ -1,0 +1,38 @@
+{{> navbar}}
+<div class="container mt-3">
+  <header class="my-5">
+    <h1>Tienda Pepito</h1>
+    <h4>
+      Donde encontraras todo lo relacionado a una vida fitness
+    </h4>
+    <p>
+      No descuides tus rutinas de ejercicios y hábitos saludables. En nuestra tienda puedes encontrar todos los suplementos deportivos, como Whey Protein, Creatinas, BCAA, entre otros, que necesitas para cuidar tu cuerpo en estos días.
+    </p>
+  </header>
+  <hr>
+  <div class="row">
+    <div class="mt-2 mb-2 col-md-10">
+      <h3>Últimos Productos agregados</h3>
+    </div>
+    <div class="mt-2 mb-2 col-md-2" >
+      <a href="/products/create">
+        <button type="button" class="btn btn-dark">Crear producto</button>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+  {{#each products}}
+    <div class="card border-dark col-md-4">
+      <div class="card-body text-dark">
+        <img src="{{this.image_product}}" width="300px" height="250px">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.description_product}}</p>
+        <p class="card-text">{{this.category}}</p>
+        <p class="card-text size-font"><strong>${{this.price}}</strong></p>
+        <a href="/products/{{this.id}}" class="btn btn-dark btn-sm">Más información</a>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+  <br>
+</div>

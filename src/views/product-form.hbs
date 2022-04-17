@@ -1,0 +1,54 @@
+{{> navbar}}
+<div class="container mt-3">
+  <h1>
+    {{#if id}}
+    Actualizando el producto "{{title}}" ({{id}})
+    {{else}}
+    Crear un nuevo producto
+    {{/if}}
+  </h1>
+  <!--
+    Este formulario se usará tanto para edición como creación, este if nos dice que si viene un id, entonces será un update, si no, será un create.
+    Para el action, si viene un id será un post a /articles/:id/update, si no, será un post a /articles/create.
+  -->
+
+  <form action="/products/{{#if id}}{{id}}/update{{else}}create{{/if}}" method="POST">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="title" class="form-label">Nombre</label>
+      <input type="text" class="form-control" name="title" aria-describedby="titleHelp" required="true"
+        value="{{title}}">
+      <div id="titleHelp" class="form-text">Nombre del producto</div>
+    </div>
+    <div class="col-md-6">
+      <label for="category" class="form-label">Categoría</label>
+      <input type="text" class="form-control" name="category" aria-describedby="categoryHelp" value="{{category}}">
+      <div id="categoryHelp" class="form-text">Categoría del producto</div>
+    </div>
+    <div class="col-md-4 mt-2">
+      <label for="price" class="form-label">Precio</label>
+      <input type="number" class="form-control" name="price" aria-describedby="priceHelp" required="true"
+        value="{{price}}">
+      <div id="priceHelp" class="form-text">Coloca un buen precio</div>
+    </div>
+    <div class="col-md-8 mt-1">
+      <label for="description_product" class="form-label">Descripcion</label>
+      <textarea class="form-control" name="description_product" rows="3"
+        aria-describedby="descriptionHelp">{{description_product}}</textarea>
+      <div id="descriptionHelp" class="form-text">Descripción del producto</div>
+    </div>
+    <div class="col-md-12">
+      <label for="image_product" class="form-label">Imagen (URL)</label>
+      <input type="text" class="form-control" name="image_product" aria-describedby="imageHelp"
+        value="{{image_product}}">
+      <div id="imageHelp" class="form-text">Adjuntar URL de la imagen</div>
+    </div>
+    <div class="mb-3 d-flex gap-2">
+      <div class="mt-4">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+      {{> backhome}}
+    </div>
+    </div>
+  </form>
+</div>
